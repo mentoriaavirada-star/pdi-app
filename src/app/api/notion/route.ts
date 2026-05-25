@@ -99,7 +99,7 @@ async function updatePDI(body: any) {
 }
 
 export async function POST(req: NextRequest) {
-  const { userId } = auth();
+  const { userId } = await auth();
   const body = await req.json();
   const { action } = body;
   if (action !== "get" && !userId) return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
